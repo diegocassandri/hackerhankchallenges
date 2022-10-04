@@ -13,35 +13,48 @@ Sample Output 1:
 Anagrams
 */
 
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Anagrams {
 
-   static boolean isAnagram(String A, String B) {
-	   A=A.toLowerCase();
-	   B=B.toLowerCase();
-	   boolean f = false;
-	  char[] c = A.toCharArray();
-	  Arrays.sort(c);
-	  char[] d = B.toCharArray();
-	  Arrays.sort(d);
-	  String a = new String (c);
-      String b = new String (d);
-      if (a.equals(b)) {
-    	  f=true;
-      }
-      return f;
-   
-   }
-    public static void main(String[] args) {
+    static boolean isAnagram(String a, String b) {
+        // Complete the function
         
-        Scanner sc=new Scanner(System.in);
-        String A=sc.next();
-        String B=sc.next();
-        boolean ret=isAnagram(A,B);
-        if(ret)System.out.println("Anagrams");
-        else System.out.println("Not Anagrams");
+        char c = 0;
         
+        for(char cs : a.toLowerCase().toCharArray()) c ^= cs;
+        
+        for(char ct : b.toLowerCase().toCharArray()) c ^= ct;
+        
+        return c == 0?true:false;
+    }
+
+    static boolean isAnagram2 (String a, String b) { 
+        
+        a = a.toLowerCase(); 
+        b = b.toLowerCase();
+  
+        char [] str1 = a.toCharArray();
+        char [] str2 = b.toCharArray();
+    
+        java.util.Arrays.sort(str1);
+        java.util.Arrays.sort(str2);
+    
+        if (java.util.Arrays.equals(str1, str2)){
+            return true;
+        }
+        return false;
+    
+    
+    }
+
+  public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
     }
 }
